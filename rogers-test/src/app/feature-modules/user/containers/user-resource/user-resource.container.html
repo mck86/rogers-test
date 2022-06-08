@@ -1,0 +1,7 @@
+<ng-container *ngIf="userResourceData$ | async as userResourceData">
+  <h5>Resource</h5>
+  <span>Name:</span> {{ userResourceData.name }}<br />
+  <span>Year:</span> {{ userResourceData.year }}<br />
+  <span>Color:</span> {{ userResourceData.color }}<br />
+  <span>Pantona Value:</span> {{ userResourceData.pantone_value }}
+</ng-container>

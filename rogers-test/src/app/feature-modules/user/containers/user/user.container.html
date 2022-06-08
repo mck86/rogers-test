@@ -1,0 +1,16 @@
+<div class="container">
+  <a [routerLink]="['/users']" type="button" class="btn btn-primary">Back</a>
+  <ng-container *ngIf="userData$ | async as userData">
+    <h3>User {{ userData.id }}</h3>
+    <div class="float-start me-3" >
+      <img src="{{ userData.avatar }}" alt="...">
+    </div>
+    <div class="col">
+      <h5>Details</h5>
+      <span>First Name:</span> {{ userData.first_name }}<br />
+      <span>Last Name:</span> {{ userData.last_name }}<br />
+      <span>Email Address:</span> {{ userData.email }}
+      <user-resource-container [userId]="userData.id"></user-resource-container>
+    </div>
+  </ng-container>
+</div>
