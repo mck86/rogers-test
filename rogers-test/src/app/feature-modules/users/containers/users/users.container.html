@@ -1,0 +1,23 @@
+<h3>Users</h3>
+<ng-container *ngIf="usersData$ | async as usersData">
+  <div class="row gx-3 gy-3">
+    <ng-container *ngFor="let data of usersData.data">
+      <div class="col-4">
+        <div class="card">
+          <img [src]="data.avatar" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ data.first_name }} {{ data.last_name }}</h5>
+            <a [routerLink]="['/user/' + data.id]" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a *ngIf="usersData.page !== 1" (click)="changePage(usersData.page - 1)" class="page-link">Previous</a></li>
+      <li *ngFor="let page of pageArr" class="page-item"><a class="page-link" (click)="changePage(page)">{{ page }}</a></li>
+      <li class="page-item"><a *ngIf="usersData.page !== usersData.total_pages" (click)="changePage(usersData.page + 1)" class="page-link">Next</a></li>
+    </ul>
+  </nav>
+</ng-container>
